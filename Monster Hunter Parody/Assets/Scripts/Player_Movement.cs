@@ -32,6 +32,7 @@ public class Player_Movement : MonoBehaviour
     {
         //Animations
         char_animation.SetBool("Walking", false);
+        char_animation.SetBool("walk_direction",false);
 
 
         // Implement motion
@@ -40,11 +41,12 @@ public class Player_Movement : MonoBehaviour
         if (should_strafe_left()) strafe_left();
         if (should_strafe_right()) strafe_right();
 
+
         turn(Input.GetAxis("Horizontal"));
         adjust_camera(Input.GetAxis("Vertical"));
 
         elevation_angle -= Input.GetAxis("Vertical");
-        elevation_angle = Mathf.Clamp(elevation_angle, -85f, 85f);
+        elevation_angle = Mathf.Clamp(elevation_angle, 85f, 85f);
     }
 
     private void adjust_camera(float vertical_adjustment)
@@ -71,7 +73,6 @@ public class Player_Movement : MonoBehaviour
 
     private void strafe_right()
     {
-
         transform.position += current_speed * transform.right * Time.deltaTime;
     }
 
@@ -91,6 +92,7 @@ public class Player_Movement : MonoBehaviour
     }
     private void move_backward()
     {
+        char_animation.SetBool("walk_direction",true);
         transform.position -= current_speed * transform.forward * Time.deltaTime;
     }
 
@@ -114,4 +116,7 @@ public class Player_Movement : MonoBehaviour
     {
         return Input.GetKey(KeyCode.A);
     }
+
+
+
 }
