@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Camera_Controller : MonoBehaviour
 {
-    float angle=0f, distance=5f;
+    float angle=0f, distance=5f, angle_D=-60;
     Transform owning_character_transform;
     private Player_Movement owning_character;
     private float sensitivity_vertical_rotate=0.01f;
@@ -13,7 +13,7 @@ public class Camera_Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        angle = angle_D * Mathf.Deg2Rad;
     }
 
     // Update is called once per frame
@@ -25,6 +25,8 @@ public class Camera_Controller : MonoBehaviour
     internal void adjust_vertical_angle(float vertical_adjustment)
     {
         angle += sensitivity_vertical_rotate * vertical_adjustment;
+        angle = Mathf.Clamp(angle,-80*Mathf.Deg2Rad,-50*Mathf.Deg2Rad);
+        angle_D = angle * Mathf.Rad2Deg;
     }
 
     internal void you_belong_to(Player_Movement player_Movement)
