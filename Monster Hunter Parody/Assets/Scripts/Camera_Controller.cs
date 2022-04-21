@@ -7,7 +7,7 @@ public class Camera_Controller : MonoBehaviour
 {
     float angle=0f, distance=5f, angle_D=-60;
     Transform owning_character_transform;
-    private Player_Movement owning_character;
+    private Character_Controller owning_character;
     private float sensitivity_vertical_rotate=0.01f;
 
     // Start is called before the first frame update
@@ -29,7 +29,7 @@ public class Camera_Controller : MonoBehaviour
         angle_D = angle * Mathf.Rad2Deg;
     }
 
-    internal void you_belong_to(Player_Movement player_Movement)
+    internal void you_belong_to(Character_Controller player_Movement)
     {
         owning_character_transform = player_Movement.transform;
         owning_character = player_Movement;
