@@ -117,6 +117,11 @@ public class Monster_Controller : MonoBehaviour
                 break;
 
         }
+
+        if (Input.GetKey(KeyCode.P))
+        {
+            MHP = -1000;
+        }
     }
 
     internal void attack(int dmg)
