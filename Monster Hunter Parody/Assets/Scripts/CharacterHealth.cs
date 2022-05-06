@@ -9,6 +9,8 @@ public class CharacterHealth : MonoBehaviour
     internal int health = 1000, adjustHealth;
     public Text healthtext;
 
+
+    Manager the_manager;
     Character_Controller theplayer;
 
     // Start is called before the first frame update
@@ -16,20 +18,17 @@ public class CharacterHealth : MonoBehaviour
     {
         theplayer = gameObject.GetComponent<Character_Controller>();
 
-
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-
         health += adjustHealth;
         healthtext.text = "Health: " + health + "/1000";
 
-        if (Input.GetKey(KeyCode.Space))
-        {
-            health--;
+        if (health < 0) {
+            the_manager.player_died(theplayer);
         }
 
     }
@@ -38,9 +37,8 @@ public class CharacterHealth : MonoBehaviour
     {
         adjustHealth = health += adjustment;
 
-        if (health < 0)
-            health = 0;
+ //       if (health < 0)
+ //           the_manager.player_died(theplayer);
     }
-
 
 }

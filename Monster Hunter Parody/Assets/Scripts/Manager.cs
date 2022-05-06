@@ -9,6 +9,7 @@ public class Manager : MonoBehaviour
 {
     List<Monster_Controller> AllMonsters;
     Character_Controller theplayer;
+    CharacterHealth CHP;
 
     // Start is called before the first frame update
     void Start()
@@ -27,9 +28,9 @@ public class Manager : MonoBehaviour
 
     }
 
-    internal Character_Controller whats_my_target(Monster_Controller monster_Target)
+    internal Character_Controller whats_my_target(Monster_Controller searching_character)
     {
-        if (monster_Target is Character_Controller)
+        if (searching_character is Character_Controller)
         {
             float distance = 100f;
             Character_Controller character = theplayer;
@@ -49,14 +50,15 @@ public class Manager : MonoBehaviour
         else 
         {
             float distance = 100f;
-            Monster_Controller monster = monster_Target;
+            Monster_Controller monster = searching_character;
             Character_Controller character = theplayer;
                 if (Vector3.Distance(monster.transform.position, character.transform.position) < distance)
                 {
-                    distance = Vector3.Distance(monster.transform.position, character.transform.position);
-                }
+                  //  distance = Vector3.Distance(monster.transform.position, character.transform.position);
+                return character;
+            }
 
-            return character;
+            return null;
         }
     }
 
@@ -67,7 +69,10 @@ public class Manager : MonoBehaviour
 
     internal void player_died(Character_Controller player_dead)
     {
-        print("You Died");
-        SceneManager.LoadScene(0);
+        if (CHP.health < 0) { 
+                
+        }
+
+
     }
 }

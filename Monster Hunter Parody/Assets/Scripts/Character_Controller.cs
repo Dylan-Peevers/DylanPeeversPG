@@ -25,9 +25,7 @@ public class Character_Controller : MonoBehaviour
 
         my_camera = Camera.main.GetComponent<Camera_Controller>();
         my_camera.you_belong_to(this);
-        
-        
-        
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -67,7 +65,7 @@ public class Character_Controller : MonoBehaviour
         Convert.ToInt32(health);
     }
 
-    private void adjust_camera(float vertical_adjustment)
+    internal void adjust_camera(float vertical_adjustment)
     {
         my_camera.adjust_vertical_angle(vertical_adjustment);
     }
@@ -199,11 +197,11 @@ public class Character_Controller : MonoBehaviour
             CharacterHealth characterHealth = hit.collider.gameObject.GetComponent<CharacterHealth>();
 
             if (characterHealth)
-                characterHealth.adjust_health(-10);
+                characterHealth.adjust_health(hitDamage);
         }
     }
 
-    private void takedamage(int dmg)
+    internal void takedamage(int dmg)
     {
             registerHit(dmg);
     }
