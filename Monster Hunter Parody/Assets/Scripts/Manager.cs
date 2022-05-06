@@ -9,6 +9,7 @@ public class Manager : MonoBehaviour
 {
     List<Monster_Controller> AllMonsters;
     Character_Controller theplayer;
+    CharacterHealth CHP;
 
     // Start is called before the first frame update
     void Start()
@@ -68,7 +69,10 @@ public class Manager : MonoBehaviour
 
     internal void player_died(Character_Controller player_dead)
     {
-        print("You Died");
-        SceneManager.LoadScene(0);
+        if (CHP.health < 0) { 
+                
+        }
+
+
     }
 }

@@ -65,7 +65,7 @@ public class Character_Controller : MonoBehaviour
         Convert.ToInt32(health);
     }
 
-    private void adjust_camera(float vertical_adjustment)
+    internal void adjust_camera(float vertical_adjustment)
     {
         my_camera.adjust_vertical_angle(vertical_adjustment);
     }

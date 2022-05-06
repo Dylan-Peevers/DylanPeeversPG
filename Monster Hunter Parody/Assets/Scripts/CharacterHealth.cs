@@ -9,6 +9,7 @@ public class CharacterHealth : MonoBehaviour
     internal int health = 1000, adjustHealth;
     public Text healthtext;
 
+
     Manager the_manager;
     Character_Controller theplayer;
 
@@ -17,22 +18,17 @@ public class CharacterHealth : MonoBehaviour
     {
         theplayer = gameObject.GetComponent<Character_Controller>();
 
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-
         health += adjustHealth;
         healthtext.text = "Health: " + health + "/1000";
 
         if (health < 0) {
             the_manager.player_died(theplayer);
-        }
-
-        if (Input.GetKey(KeyCode.Space))
-        {
-            health--;
         }
 
     }
